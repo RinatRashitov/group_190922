@@ -58,7 +58,7 @@ if(nEvent==1)
 {
     Console.WriteLine($"Количество четных элементов {count}");
 }
-else if(nEvent==1)
+else if(nEvent==0)
 {
     Console.WriteLine($"Количество нечетных элементов {count}");
 }
