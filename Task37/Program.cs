@@ -3,38 +3,63 @@
 [6 7 3 6] -> 36 21
 */
 
-// функция создания массива
-// НКЦИЯ ПЕРЕМНОЖЕНИЯ ЭЛЕМЕНТОВ
-// создаем массив
-
-void getPrint(string Text, ConsoleColor color)
+int[] createArray(int userNum)
 {
-    Console.ForegroundColor = color;
-    Console.WriteLine(Text);
-    Console.ResetColor();
+    int[] userAr = new int[userNum];
+    return userAr;
 }
 
-void PrintArray(int[] array)
+void PrintArray(int[] usArray)
 {
     Console.Write("[");
-    for(int i = 0;i < array.Length-1;i++)
+    int index = usArray.Length;
+    for (int j = 0; j < index - 1; j++)
     {
-         Console.Write($"{array[i]},");
+        Console.Write(usArray[j]);
+        Console.Write(", ");
     }
-    Console.Write($"{array[array.Length-1]}");
+    Console.Write(usArray[index - 1]);
     Console.Write("]");
 }
 
-Console.WriteLine("Введите желаемую длину массива :");
-int userNumber = Convert.ToInt32(Console.ReadLine());
-getPrint("Задайте минимальный диапазон значений в массиве :", ConsoleColor.Blue);
-int MinMeaning = Convert.ToInt32(Console.ReadLine());
-getPrint("Задайте максимальный диапазон значений в массиве :", ConsoleColor.Red);
-int MaxMeaning = Convert.ToInt32(Console.ReadLine());
-
-
-int[] Array = new int[userNumber];
-for (int i = 0; i < userNumber; i++)
+int[] FillDataArray(int[] usArray, int numFrom, int numTo)
 {
-    Array[i] = new Random().Next(MinMeaning, MaxMeaning +1);
+    for (int j = 0; j < usArray.Length; j++)
+    {
+        usArray[j] = new Random().Next(numFrom, numTo);
+    }
+    return usArray;
 }
+
+int[] returnArrayMagig(int[] usArray)
+{
+    int[] MagicArray = new int[usArray.Length / 2 + usArray.Length % 2];
+    for (int j = 0; j < usArray.Length / 2 + usArray.Length % 2; j++)
+    {
+        //Console.WriteLine($"usArray.Length/2+usArray.Length%2={usArray.Length / 2 + usArray.Length % 2}");
+        if (j == usArray.Length / 2 && usArray.Length % 2 == 1)
+        {
+            MagicArray[j] = usArray[j];
+            //Console.WriteLine($"j={j}");
+        }
+        else
+        {
+            MagicArray[j] = usArray[j] + usArray[usArray.Length - j - 1];
+        }
+    }
+    return MagicArray;
+}
+
+Console.Write("Введите число элементов в массиве: ");
+int userNumber = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите минимальное значение элемента: ");
+int numFrom = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите максимальное значение элемента: ");
+int numTo = Convert.ToInt32(Console.ReadLine());
+int[] userArray = createArray(userNumber);
+userArray = FillDataArray(userArray, numFrom, numTo);
+Console.WriteLine("Полученный массив");
+PrintArray(userArray);
+Console.WriteLine("");
+Console.WriteLine("Результирующий массив");
+PrintArray(returnArrayMagig(userArray));
