@@ -8,8 +8,9 @@ int[] createArray(int userNum)
     return userAr;
 }
 
-void PrintArray(int[] usArray)
+void PrintArray(int[] usArray, string text)
 {
+    Console.WriteLine($"--------------{text}-----------------");
     Console.Write("[");
     int index = usArray.Length;
     for (int j = 0; j < index - 1; j++)
@@ -46,9 +47,9 @@ int userNumber = Convert.ToInt32(Console.ReadLine());
 
 int[] userArray = createArray(userNumber);
 userArray = FillDataArray(userArray);
-Console.WriteLine("Полученный массив");
-PrintArray(userArray);
+//Console.WriteLine("Полученный массив");
+PrintArray(userArray, "Полученный массив");
 Console.WriteLine("");
 userArray = ReverseArray(userArray);
-Console.WriteLine("Перевернутый массив");
-PrintArray(userArray);
+//Console.WriteLine("Перевернутый массив");
+PrintArray(userArray, "Перевернутый массив");
