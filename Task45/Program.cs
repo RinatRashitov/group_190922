@@ -33,7 +33,7 @@ int[] ReverseArray(int[] reversibleArray)
     int[] resultArray= new int[reversibleArray.Length];
     for(int i=0;i<reversibleArray.Length;i++)
     {
-        resultArray[reversibleArray.Length-i-1]=reversibleArray[i]; 
+        resultArray[i]=reversibleArray[i]; 
     }
     return resultArray;
 }
@@ -51,7 +51,7 @@ PrintArray(userArray);
 int[] reversedArray = createArray(userNumber);
 reversedArray=ReverseArray(userArray);
 Console.WriteLine();
-Console.WriteLine("Перевернутый массив");
+Console.WriteLine("Скопированный массив");
 PrintArray(reversedArray);
 
 
