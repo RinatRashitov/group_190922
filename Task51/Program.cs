@@ -68,14 +68,17 @@ int[,] Fill2DDataArray(int[,] usArray, int numFrom, int numTo)
     return usArray;
 }
 
-int getSummDiagonal(int[,] usArray)
+string getSummDiagonal(int[,] usArray)
 {
-    int result = 0;
+    string result = "";
+    int summ = 0;
     for (int j = 0; j < usArray.GetLength(0) && j < usArray.GetLength(1); j++)
     {
-        result = result + usArray[j, j];
+        summ = summ + usArray[j, j];
+        if (j != 0) result = result + "+";
+        result = result + Convert.ToString(usArray[j, j]);
     }
-
+    result = result + " = " + summ;
     return result;
 }
 
@@ -87,4 +90,4 @@ int[,] userArray = create2DArray(numX, numY);
 userArray = Fill2DDataArray(userArray, numFrom, numTo + 1);
 Console.WriteLine("Первоначальная матрица");
 Print2DArray(userArray);
-Console.WriteLine($"Сумма главной диагонали равна {getSummDiagonal(userArray)}");
+Console.WriteLine($"Сумма элементов главной диагонали: {getSummDiagonal(userArray)}");
