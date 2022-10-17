@@ -74,6 +74,5 @@ int getMaxDigitalFromPascalTriangle(int[,] usArray)
 int numN = getIntNumberFromUser("Введите значение значение N для определения высоты треугольника Паскаля ");
 int[,] pascalTriangle = create2DArray(numN, numN);
 pascalTriangle = Fill2DDataPascalTriangleArray(pascalTriangle);
-int minIndent = 1; // минимальный отступ между числами в печатаемом треугольнике
+int minIndent = 2; // минимальный отступ между числами в печатаемом треугольнике
 PrintPascalTriangle(pascalTriangle, getMaxDigitalFromPascalTriangle(pascalTriangle) + minIndent);
-Console.WriteLine(getMaxDigitalFromPascalTriangle(pascalTriangle));
