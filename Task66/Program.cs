@@ -23,13 +23,14 @@ int getIntNumberFromUser(string userInformation)
 
 int getSummFromMToN(int M, int N)
 {
-    int result=0;
-    while (N >= M)
+    if (M == N + 1)
     {
-        result=result+N;
-        N=N-1;
+        return 0;
     }
-    return result;
+    else
+    {
+        return M + getSummFromMToN(M + 1, N);
+    }
 }
 
 int numM = getIntNumberFromUser("Введите значение M ");
