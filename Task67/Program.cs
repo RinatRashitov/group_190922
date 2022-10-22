@@ -23,16 +23,15 @@ int getIntNumberFromUser(string userInformation)
     return result;
 }
 
-void getSumOfDigits(int N)
+int getSumOfDigits(int N)
 {
-    int result = 0;
-    for(int i=N;i>0;i=i/10)
+    if(N==0)
     {
-        result=result+i%10;
+        return 0;
     }
-    Console.WriteLine($"Сумма цифр числа {N} равна {result}");
+    return N%10+getSumOfDigits(N/10);
 }
 
 int numN = getIntNumberFromUser("Введите значение ");
 Console.WriteLine("");
-getSumOfDigits(numN);
+Console.WriteLine($"Сумма цифр числа {numN} равна {getSumOfDigits(numN)}");
